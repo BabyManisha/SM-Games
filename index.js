@@ -42,9 +42,7 @@ const option = {
         self.timerLevel = 1;
         self.score = 0;
         alert("You lost the Game!");
-        alert("Find the Maximum number in the given list!");
-        self.levelRule = "Find the Maximum number in the given list!";
-        self.getBalls();
+        self.showGame = false;
       }else{
         self.timer++;
         self.timerFun = setTimeout(() => {
@@ -85,6 +83,7 @@ const option = {
           alert("Find the Minimum number in the given list!");
           self.levelRule = "Find the Minimum number in the given list!";
         }
+        self.getBalls();
       }else{
         if(self.highScore < self.score){
           self.highScore = self.score;
@@ -92,9 +91,8 @@ const option = {
         }
         self.score = 0;
         alert("You lost the Game!");
-        self.levelRule = "Find the Maximum number in the given list!";
+        self.showGame = false;
       }
-      self.getBalls();
     }
   } 
 };
