@@ -1,0 +1,42 @@
+.playground-section{
+  margin: 10% 50px;
+}
+
+.playground{
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px dotted red;
+}
+
+.ball {
+  width: 100px;
+  height: 100px;
+  background: purple;
+  border-radius: 50%;
+  position: relative;
+  animation: mymove 5s infinite;
+  animation-delay: 5s;
+  -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+  -webkit-animation-delay: 5s; /* Safari 4.0 - 8.0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+}
+
+b{
+  color: white;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {opacity: 1;}
+  to {opacity: 0.2;}
+}
+
+@keyframes mymove {
+  from {opacity: 1;}
+  to {opacity: 0.2;}
+}

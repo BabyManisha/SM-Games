@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>SM-Games</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./index.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div id="app">
+            <nav aria-label="breadcrumb" v-if="showGame">
+                <div class="alert alert-danger" role="alert">
+                    <strong>Game Rule - Find the maximum number in the given list!</strong>
+                </div>
+            </nav>
+            <section class="playground-section">
+                <div v-if="!showGame">
+                <div class="jumbotron">
+                    <h1 class="display-4">Hello, world!</h1>
+                    <p class="lead">Welcome to SM Game Zone, Here you can find all the interesting games.</p>
+                    <hr class="my-4">
+                    <p>Game Rule - Find the maximum number in the given list!</p>
+                    <a class="btn btn-primary btn-lg" role="button" @click="startGame">Let's Play</a>
+                </div>
+                </div>
+                <div v-else>
+                    <div class="score-board">
+                        <div class="card-deck">
+                            <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+                                <div class="card-body">
+                                <h5 class="card-title">Leader Board - Coming Soon</h5>
+                                <p class="card-text">
+                                    <ul class="list-group">
+                                    <li class="list-group-item list-group-item-primary" v-for="(value, key) in scoreBoard">{{key}} 
+                                        <span class="badge badge-primary badge-pill">{{value}}</span>
+                                    </li>
+                                    </ul>
+                                </p>
+                                <p class="card-text"><small class="text-muted">Last updated few mins ago</small></p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title">Your Top Score: {{highScore}}</h5>
+                                <h5 class="card-title">Your Score: {{score}}</h5>
+                                <h5 class="card-title">Time Remaining: {{20 - timer}}</h5>
+                                    <p class="card-text playground">
+                                    <span class="ball ball-1" v-for="bv in ballValues" @click="valideAnswer(bv)">
+                                        <b>{{bv}}</b></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card text-white bg-warning mb-3" style="max-width: 25rem;">
+                                <div class="card-body">
+                                <h5 class="card-title">Your Top Scores - Coming Soon</h5>
+                                <p class="card-text">
+                                    <ul class="list-group">
+                                    <li class="list-group-item list-group-item-primary" v-for="(ub, index) in userBoard">Top - {{index+1}} 
+                                        <span class="badge badge-primary badge-pill">{{ub}}</span>
+                                    </li>
+                                    </ul>
+                                </p>
+                                <p class="card-text"><small class="text-muted">Last updated few mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-material@1.0.0-beta-8/dist/vue-material.min.js"></script>
+    <script src="./index.js"></script>
+</html>
