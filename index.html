@@ -8,7 +8,7 @@
         <div id="app">
             <nav aria-label="breadcrumb" v-if="showGame">
                 <div class="alert alert-danger" role="alert">
-                    <strong>Game Rule - Find the maximum number in the given list!</strong>
+                    <strong>Level Rule - {{levelRule}}</strong>
                 </div>
             </nav>
             <section class="playground-section">
@@ -17,14 +17,14 @@
                     <h1 class="display-4">Hello, world!</h1>
                     <p class="lead">Welcome to SM Game Zone, Here you can find all the interesting games.</p>
                     <hr class="my-4">
-                    <p>Game Rule - Find the maximum number in the given list!</p>
+                    <p>Game Rule - Find the Odd Man Out in the given list!</p>
                     <a class="btn btn-primary btn-lg" role="button" @click="startGame">Let's Play</a>
                 </div>
                 </div>
                 <div v-else>
                     <div class="score-board">
                         <div class="card-deck">
-                            <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+                            <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">Leader Board - Coming Soon</h5>
                                 <p class="card-text">
@@ -40,15 +40,16 @@
                             <div class="card">
                                 <div class="card-body">
                                 <h5 class="card-title">Your Top Score: {{highScore}}</h5>
+                                <h5 class="card-title">Level - {{level}}</h5>
                                 <h5 class="card-title">Your Score: {{score}}</h5>
-                                <h5 class="card-title">Time Remaining: {{20 - timer}}</h5>
+                                <h5 class="card-title">Time Remaining: {{10 - timer}}</h5>
                                     <p class="card-text playground">
                                     <span class="ball ball-1" v-for="bv in ballValues" @click="valideAnswer(bv)">
                                         <b>{{bv}}</b></span>
                                     </p>
                                 </div>
                             </div>
-                            <div class="card text-white bg-warning mb-3" style="max-width: 25rem;">
+                            <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">Your Top Scores - Coming Soon</h5>
                                 <p class="card-text">

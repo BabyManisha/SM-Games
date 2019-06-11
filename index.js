@@ -20,7 +20,10 @@ const option = {
       },
       userBoard: ['128', '54', '52', '48', '36', '22'],
       timer: 0,
-      timerFun: null
+      timerLevel: 1,
+      timerFun: null,
+      level: 1,
+      levelRule: "Find the Maximum number in the given list!"
     }
   },
   methods: {
@@ -31,18 +34,22 @@ const option = {
     },
     activeCounter(){
       let self = this;
-      if(self.timer == 20){
+      if(self.timer == 10){
         if(self.highScore < self.score){
           self.highScore = self.score;
           sessionStorage.setItem('highScore', self.highScore);
         }
+        self.timerLevel = 1;
         self.score = 0;
+        alert("You lost the Game!");
+        alert("Find the Maximum number in the given list!");
+        self.levelRule = "Find the Maximum number in the given list!";
         self.getBalls();
       }else{
         self.timer++;
         self.timerFun = setTimeout(() => {
           self.activeCounter()
-        }, 1000);
+        }, (2000 / self.timerLevel));
       }
     },
     getBalls(){
@@ -59,17 +66,33 @@ const option = {
       self.activeCounter();
     },
     valideAnswer(val){
-      let self = this, maxVal = 0;
-      maxVal = Math.max.apply(null, self.ballValues);
-      debugger;
-      if(val == maxVal){
-        self.score += 2;
+      let self = this, correctVal = 0;
+      clearTimeout(self.timerFun);
+      switch(self.level){
+        case 1: correctVal = Math.max.apply(null, self.ballValues);
+                break;
+        case 2: correctVal = Math.min.apply(null, self.ballValues);
+                break;
+      }
+      if(val == correctVal){
+        self.score += 3;
+        if(self.score%3 == 0){
+          self.timerLevel = 2;
+        }
+        if(self.score == 30){
+          self.level = 2;
+          alert("Now you are in Level -2");
+          alert("Find the Minimum number in the given list!");
+          self.levelRule = "Find the Minimum number in the given list!";
+        }
       }else{
         if(self.highScore < self.score){
           self.highScore = self.score;
           sessionStorage.setItem('highScore', self.highScore);
         }
         self.score = 0;
+        alert("You lost the Game!");
+        self.levelRule = "Find the Maximum number in the given list!";
       }
       self.getBalls();
     }
