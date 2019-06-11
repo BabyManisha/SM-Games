@@ -23,13 +23,11 @@ const option = {
       timerFun: null
     }
   },
-  created(){
-    this.highScore = sessionStorage.getItem('highScore') || 0;
-    this.getBalls();
-  },
   methods: {
     startGame(){
       this.showGame = true;
+      this.highScore = sessionStorage.getItem('highScore') || 0;
+      this.getBalls();
     },
     activeCounter(){
       let self = this;
